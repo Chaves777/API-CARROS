@@ -42,7 +42,4 @@ class User
 
         return false;
     }
-
-
-
 }

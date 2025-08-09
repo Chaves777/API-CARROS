@@ -4,11 +4,11 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Pc\\Apisenai\\": "api/",
+            "Pc\\Apisenai\\": "API/",
             "Model\\": "Model/",
-      "Controller\\": "Controller/"
+            "Controller\\": "Controller/"
         },
-         "files": [
+        "files": [
             "Config/configuration.php"
         ]
     },
@@ -21,7 +21,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=8.0",
-        "ext-mbstring": "*",
-        "slim/slim": "5.x-dev"
+        "ext-mbstring": "*"
     }
 }

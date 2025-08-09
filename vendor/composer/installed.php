@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'pc/apisenai',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'd6b33775388efffc1d00a0bb134ad5064cfe2e21',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'pc/apisenai' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'd6b33775388efffc1d00a0bb134ad5064cfe2e21',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

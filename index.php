@@ -15,7 +15,12 @@ switch ($method) {
         break;
     case 'POST':
         $userController->createUser();
+    case 'PUT':
+        $userController->updateUser();    
         break;
+    case 'DELETE':
+         $userController->deleteUser();
+        break;    
     default:
         // FORMATA TEXTO EM JSON
         echo json_encode(["message" => "Method not allowed"]);
@@ -25,3 +30,4 @@ switch ($method) {
 // if (empty($usuario)) {
 //     echo "Vazio!";
 // }
+?>

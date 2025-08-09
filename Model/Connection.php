@@ -2,6 +2,8 @@
 
 namespace Model;
 
+require_once __DIR__ . '/../Config/configuration.php';
+
 use PDO;
 use PDOException;
 

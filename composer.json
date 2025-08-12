@@ -1,10 +1,10 @@
 {
-    "name": "pc/apisenai",
+    "name": "pc/api-rest",
     "description": "API Rest",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Pc\\Apisenai\\": "API/",
+            "Pc\\Apisenai\\": "Config/",
             "Model\\": "Model/",
             "Controller\\": "Controller/"
         },

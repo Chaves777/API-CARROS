@@ -11,7 +11,7 @@ return array(
     'Psr\\Http\\Server\\' => array($vendorDir . '/psr/http-server-middleware/src', $vendorDir . '/psr/http-server-handler/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
-    'Pc\\Apisenai\\' => array($baseDir . '/api'),
+    'Pc\\Apisenai\\' => array($baseDir . '/Config'),
     'Model\\' => array($baseDir . '/Model'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Controller\\' => array($baseDir . '/Controller'),

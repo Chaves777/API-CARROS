@@ -8,7 +8,7 @@ class ComposerStaticInit988be63c1b8fc010ed27f36907a4f4f4
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
-        'f3acf15adcdaa55dd6fd95b065b4a226' => __DIR__ . '/../..' . '/Config/configuration.php',
+        'c8552ff4fc5c3bff9254a8ce1fb97fac' => __DIR__ . '/../..' . '/Config/configuration.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -63,7 +63,7 @@ class ComposerStaticInit988be63c1b8fc010ed27f36907a4f4f4
         ),
         'Pc\\Apisenai\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/api',
+            0 => __DIR__ . '/../..' . '/Config',
         ),
         'Model\\' => 
         array (

@@ -22,7 +22,7 @@ if ($uri[0] === 'API-CARROS') {
     if ($method === 'GET' && !isset($uri[1])) {
         $controller->listAll();
     } elseif ($method === 'GET' && isset($uri[1])) {
-        $controller->show();
+        $controller->show($_GET['id']); 
     } elseif ($method === 'POST') {
         $data = json_decode(file_get_contents("php://input"), true);
         $controller->create($data);

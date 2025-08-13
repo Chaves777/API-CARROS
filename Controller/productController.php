@@ -24,23 +24,25 @@ class ProductController {
         if ($data) {
             echo json_encode($data);
         } else {
-            http_response_code(404);
+            http_response_code(404 );
             echo json_encode(["message" => "Produto não encontrado."]);
         }
     }
 
     public function create($data) {
         $product = new Product($this->db);
-        $product->name = $data['name'] ?? '';   
-        $product->descricao = $data['descricao'] ?? '';
-        $product->preco = $data['preco'] ?? 0;
-        $product->quantidade = $data['quantidade'] ?? 0;
+        $product->marca = $data["marca"] ?? "";
+        $product->name = $data["name"] ?? "";
+        $product->descricao = $data["descricao"] ?? "";
+        $product->preco = $data["preco"] ?? 0;
+        $product->quantidade = $data["quantidade"] ?? 0;
+
 
         if ($product->create()) {
-            http_response_code(201);
+            http_response_code(201 );
             echo json_encode(["message" => "Produto criado com sucesso."]);
         } else {
-            http_response_code(400);
+            http_response_code(400 );
             echo json_encode(["message" => "Não foi possível criar o produto."]);
         }
     }
@@ -48,15 +50,16 @@ class ProductController {
     public function update($id, $data) {
         $product = new Product($this->db);
         $product->id = $id;
-        $product->name = $data['name'] ?? '';
-        $product->descricao = $data['descricao'] ?? '';
-        $product->preco = $data['preco'] ?? 0;
-        $product->quantidade = $data['quantidade'] ?? 0;
+        $product->marca = $data["marca"] ?? "";
+        $product->name = $data["name"] ?? "";
+        $product->descricao = $data["descricao"] ?? "";
+        $product->preco = $data["preco"] ?? 0;
+        $product->quantidade = $data["quantidade"] ?? 0;
 
         if ($product->update()) {
             echo json_encode(["message" => "Produto atualizado com sucesso."]);
         } else {
-            http_response_code(400);
+            http_response_code(400 );
             echo json_encode(["message" => "Não foi possível atualizar o produto."]);
         }
     }
@@ -68,8 +71,9 @@ class ProductController {
         if ($product->delete()) {
             echo json_encode(["message" => "Produto excluído com sucesso."]);
         } else {
-            http_response_code(400);
+            http_response_code(400 );
             echo json_encode(["message" => "Não foi possível excluir o produto."]);
         }
     }
 }
+    

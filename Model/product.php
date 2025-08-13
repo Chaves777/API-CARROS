@@ -7,6 +7,7 @@ class Product {
     private $conn;
     private $table_name = "estoque"; 
     public $id;
+    public $marca;
     public $name;
     public $descricao;
     public $preco;
@@ -24,7 +25,7 @@ class Product {
     }
 
     public function readOne() {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 1";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
         $stmt->execute();
@@ -32,12 +33,13 @@ class Product {
     }
 
     public function create() {
-        $query = "INSERT INTO " . $this->table_name . " (name, descricao, preco, quantidade) VALUES (:name, :descricao, :preco, :quantidade)";
+        $query = "INSERT INTO " . $this->table_name . " (marca, name, descricao, preco, quantidade) VALUES (:marca, :name, :descricao, :preco, :quantidade)";
 
         $stmt = $this->conn->prepare($query);
 
         $this->sanitize();
 
+        $stmt->bindParam(":marca", $this->marca);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":descricao", $this->descricao);
         $stmt->bindParam(":preco", $this->preco);
@@ -47,11 +49,12 @@ class Product {
     }
 
     public function update() {
-        $query = "UPDATE " . $this->table_name . " SET name=:name, descricao=:descricao, preco=:preco, quantidade=:quantidade WHERE id=:id";
+        $query = "UPDATE " . $this->table_name . " SET  marca=:marca, name=:name, descricao=:descricao, preco=:preco, quantidade=:quantidade WHERE id=:id";
         $stmt = $this->conn->prepare($query);
 
         $this->sanitize();
 
+        $stmt->bindParam(":marca", $this->marca);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":descricao", $this->descricao);
         $stmt->bindParam(":preco", $this->preco);
@@ -65,14 +68,15 @@ class Product {
         $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $this->id);
+        
         return $stmt->execute();
     }
 
     private function sanitize() {
+        $this->marca = htmlspecialchars(strip_tags($this->marca));
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->descricao = htmlspecialchars(strip_tags($this->descricao));
         $this->preco = htmlspecialchars(strip_tags($this->preco));
         $this->quantidade = htmlspecialchars(strip_tags($this->quantidade));
     }
 }
-

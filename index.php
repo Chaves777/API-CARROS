@@ -1,5 +1,6 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . 
+'/vendor/autoload.php';
 
 use Controller\ProductController;
 use Model\Connection;
@@ -17,25 +18,37 @@ $controller = new ProductController($db);
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
 
-if ($uri[0] === 'API-SENAI') {
+if ($uri[0] === 'API-CARROS') {
     if ($method === 'GET' && !isset($uri[1])) {
         $controller->listAll();
     } elseif ($method === 'GET' && isset($uri[1])) {
-        $controller->show($uri[1]);
+        $controller->show();
     } elseif ($method === 'POST') {
         $data = json_decode(file_get_contents("php://input"), true);
         $controller->create($data);
     } elseif ($method === 'PUT' && isset($uri[1])) {
         $data = json_decode(file_get_contents("php://input"), true);
-        $controller->update($uri[1], $data);
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $controller->update($id, $data);
+        } else {
+            http_response_code(400 );
+            echo json_encode(["message" => "ID não informado para atualização."]);
+        }
     } elseif ($method === 'DELETE' && isset($uri[1])) {
-        $controller->delete($uri[1]);
+        $id = $_GET["id"] ?? null;
+        if ($id) {
+            $controller->delete($id);
+        } else {
+            http_response_code(400 );
+            echo json_encode(["message" => "ID não informado para exclusão."]);
+        }
     } else {
-        http_response_code(404);
+        http_response_code(404 );
         echo json_encode(["message" => "Rota não encontrada."]);
     }
 } else {
-    http_response_code(404);
+    http_response_code(404 );
     echo json_encode(["message" => "Endpoint inválido."]);
 }
 
